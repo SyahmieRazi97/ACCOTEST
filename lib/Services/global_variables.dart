@@ -1,0 +1,2 @@
+String loginUrlImage = 'https://www.shutterstock.com/image-photo/business-financing-accounting-banking-concept-600nw-2441922909.jpg';
+String PassUrlImage = 'https://i.pinimg.com/736x/bf/1a/03/bf1a031f0f65e284e2d500009ab78263.jpg';
