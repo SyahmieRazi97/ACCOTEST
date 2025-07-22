@@ -8,6 +8,8 @@ class HardLedger extends StatefulWidget {
   State<HardLedger> createState() => _HardLedgerState();
 }
 
+final ScrollController _scrollController = ScrollController();
+
 class MapEquality {
   bool equals(Map<String, String> a, Map<String, String> b) {
     for (var key in a.keys) {
@@ -26,13 +28,24 @@ class _HardLedgerState extends State<HardLedger> {
   final List<Map<String, dynamic>> questions = [
     {
       'question': 'Started business with RM 30,000 in bank, RM 30,000 cash and RM 20,000 furniture',
-      'choices': ['Cash', 'Cash 30,000', 'Bank', 'Bank 30,000', 'Capital', 'Capital 30,000', 'Capital 30,000', 'Capital 20,000', 'Furniture', 'Furniture 20,000'],
+      'choices': [
+        'Cash',
+        'Cash 30,000',
+        'Bank',
+        'Bank 30,000',
+        'Capital',
+        'Capital 30,000',
+        'Capital 30,000',
+        'Capital 20,000',
+        'Furniture',
+        'Furniture 20,000'
+      ],
       'correct': {
-        'Account_1': '',
-        'Acc1_Details_1': 'Cash',
+        'Account_1': 'Cash',
+        'Acc1_Details_1': '',
         'Acc1_Details_2': 'Capital 30,000',
-        'Account_2': '',
-        'Acc2_Details_1': 'Bank',
+        'Account_2': 'Bank',
+        'Acc2_Details_1': '',
         'Acc2_Details_2': 'Capital 30,000',
         'Account_3': 'Furniture',
         'Acc3_Details_1': 'Capital 20,000',
@@ -50,7 +63,16 @@ class _HardLedgerState extends State<HardLedger> {
     },
     {
       'question': 'Received invoice from Ketapang Enterprise RM 10,000',
-      'choices': ['Sales', 'Sales 10,000', 'Purchase', 'Purchase 10,000', 'Acc. Receivable Ketapang Ent', 'Acc. Receivable Ketapang Ent 10,000', 'Acc. Payable Ketapang Ent', 'Acc. Payable Ketapang Ent 10,000'],
+      'choices': [
+        'Sales',
+        'Sales 10,000',
+        'Purchase',
+        'Purchase 10,000',
+        'Acc. Receivable Ketapang Ent',
+        'Acc. Receivable Ketapang Ent 10,000',
+        'Acc. Payable Ketapang Ent',
+        'Acc. Payable Ketapang Ent 10,000'
+      ],
       'correct': {
         'Account_1': 'Purchase',
         'Acc1_Details_1': 'Acc. Payable Ketapang Ent 10,000',
@@ -68,7 +90,16 @@ class _HardLedgerState extends State<HardLedger> {
     },
     {
       'question': 'Sent invoice to Markisar Enterprise RM 2,000',
-      'choices': ['Sales', 'Sales 2,000', 'Purchase', 'Purchase 2,000', 'Acc. Receivable Markisar Ent', 'Acc. Receivable Markisar Ent 2,000', 'Acc. Payable Markisar Ent', 'Acc. Payable Markisar Ent 2,000'],
+      'choices': [
+        'Sales',
+        'Sales 2,000',
+        'Purchase',
+        'Purchase 2,000',
+        'Acc. Receivable Markisar Ent',
+        'Acc. Receivable Markisar Ent 2,000',
+        'Acc. Payable Markisar Ent',
+        'Acc. Payable Markisar Ent 2,000'
+      ],
       'correct': {
         'Account_1': 'Sales',
         'Acc1_Details_1': '',
@@ -86,7 +117,16 @@ class _HardLedgerState extends State<HardLedger> {
     },
     {
       'question': 'Received defective goods from Markisar Enterprise RM 200',
-      'choices': ['Sales Return', 'Sales Return 200', 'Purchase Return', 'Purchase Return 200', 'Acc. Payable Markisar Ent', 'Acc. Payable Markisar Ent 200', 'Acc. Receivable Markisar Ent', 'Acc. Receivable Markisar Ent 200'],
+      'choices': [
+        'Sales Return',
+        'Sales Return 200',
+        'Purchase Return',
+        'Purchase Return 200',
+        'Acc. Payable Markisar Ent',
+        'Acc. Payable Markisar Ent 200',
+        'Acc. Receivable Markisar Ent',
+        'Acc. Receivable Markisar Ent 200'
+      ],
       'correct': {
         'Account_1': 'Sales Return',
         'Acc1_Details_1': 'Sales Return 200',
@@ -104,7 +144,15 @@ class _HardLedgerState extends State<HardLedger> {
     },
     {
       'question': 'The business paid all outstanding amounts by cheque to Ketapang Enterprise. Received a discount of 5% discount',
-      'choices': ['Bank', 'Bank 9,500', 'Discount received', 'Discount received 500', 'Acc. Payable Ketapang Ent', 'Acc. Payable Ketapang Ent 9,500', 'Acc. Payable Ketapang Ent 500'],
+      'choices': [
+        'Bank',
+        'Bank 9,500',
+        'Discount received',
+        'Discount received 500',
+        'Acc. Payable Ketapang Ent',
+        'Acc. Payable Ketapang Ent 9,500',
+        'Acc. Payable Ketapang Ent 500'
+      ],
       'correct': {
         'Account_1': 'Bank',
         'Acc1_Details_1': '',
@@ -124,7 +172,15 @@ class _HardLedgerState extends State<HardLedger> {
     },
     {
       'question': 'Paid shop rent by cheque RM 1,700 and salary to workers RM 1,500 by cheque',
-      'choices': ['Bank', 'Bank 1,700', 'Bank 1,500', 'Salary', 'Salary 1,500', 'Rental', 'Rental 1,700'],
+      'choices': [
+        'Bank',
+        'Bank 1,700',
+        'Bank 1,500',
+        'Salary',
+        'Salary 1,500',
+        'Rental',
+        'Rental 1,700'
+      ],
       'correct': {
         'Account_1': 'Bank',
         'Acc1_Details_1': '',
@@ -247,7 +303,8 @@ class _HardLedgerState extends State<HardLedger> {
   }
 
   bool _isAnswerCorrect() {
-    final correct = questions[currentQuestion]['correct'] as Map<String, String>;
+    final correct = questions[currentQuestion]['correct'] as Map<String,
+        String>;
     return MapEquality().equals(droppedSymbols, correct);
   }
 
@@ -289,56 +346,58 @@ class _HardLedgerState extends State<HardLedger> {
   void _showFinalScoreDialog() {
     showDialog(
       context: context,
-      builder: (_) => AlertDialog(
-        title: Text('Quiz Finished'),
-        content: Text('Your final score is $score/${questions.length}'),
-        actions: [
-          TextButton(
-            onPressed: () {
-              Navigator.pop(context);
-              setState(() {
-                currentQuestion = 0;
-                score = 0;
-                droppedSymbols = {
-                  'Account_1': '',
-                  'Acc1_Details_1': '',
-                  'Acc1_Details_2': '',
-                  'Acc1_Details_3': '',
-                  'Acc1_Details_4': '',
-                  'Account_2': '',
-                  'Acc2_Details_1': '',
-                  'Acc2_Details_2': '',
-                  'Account_3': '',
-                  'Acc3_Details_1': '',
-                  'Acc3_Details_2': '',
-                  'Acc3_Details_3': '',
-                  'Acc3_Details_4': '',
-                  'Account_4': '',
-                  'Acc4_Details_1': '',
-                  'Acc4_Details_2': '',
-                  'Acc4_Details_3': '',
-                  'Acc4_Details_4': '',
-                  'Acc4_Details_5': '',
-                  'Acc4_Details_6': '',
-                };
-                isSubmitted = false;
-              });
-              startTimer();
-            },
-            child: Text('Restart'),
-          )
-        ],
-      ),
+      builder: (_) =>
+          AlertDialog(
+            title: Text('Quiz Finished'),
+            content: Text('Your final score is $score/${questions.length}'),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                  setState(() {
+                    currentQuestion = 0;
+                    score = 0;
+                    droppedSymbols = {
+                      'Account_1': '',
+                      'Acc1_Details_1': '',
+                      'Acc1_Details_2': '',
+                      'Acc1_Details_3': '',
+                      'Acc1_Details_4': '',
+                      'Account_2': '',
+                      'Acc2_Details_1': '',
+                      'Acc2_Details_2': '',
+                      'Account_3': '',
+                      'Acc3_Details_1': '',
+                      'Acc3_Details_2': '',
+                      'Acc3_Details_3': '',
+                      'Acc3_Details_4': '',
+                      'Account_4': '',
+                      'Acc4_Details_1': '',
+                      'Acc4_Details_2': '',
+                      'Acc4_Details_3': '',
+                      'Acc4_Details_4': '',
+                      'Acc4_Details_5': '',
+                      'Acc4_Details_6': '',
+                    };
+                    isSubmitted = false;
+                  });
+                  startTimer();
+                },
+                child: Text('Restart'),
+              )
+            ],
+          ),
     );
   }
 
   Color getBoxColor(String column) {
     if (!isSubmitted) return Colors.grey[200]!;
 
-    final correct = questions[currentQuestion]['correct'] as Map<String, String>;
+    final correct = questions[currentQuestion]['correct'] as Map<String,
+        String>;
     final user = droppedSymbols[column];
 
-    if (user == correct[column] || user == '') {
+    if (user == correct[column] && user == '') {
       return Colors.green[400]!;
     } else if (user != correct[column] && user != '') {
       return Colors.red[200]!;
@@ -351,6 +410,7 @@ class _HardLedgerState extends State<HardLedger> {
 
   @override
   void dispose() {
+    _scrollController.dispose();
     timer?.cancel();
     countdownTimer?.cancel();
     super.dispose();
@@ -358,14 +418,15 @@ class _HardLedgerState extends State<HardLedger> {
 
   @override
   Widget build(BuildContext context) {
-
     final questionText = questions[currentQuestion]['question'] as String;
 
     return Scaffold(
       backgroundColor: Colors.grey.shade400,
       appBar: AppBar(
         title: Text('Ledger Hard Quiz',
-          style: TextStyle(fontFamily: 'AppleGaramond', fontSize: 27, fontWeight: FontWeight.bold),
+          style: TextStyle(fontFamily: 'AppleGaramond',
+              fontSize: 27,
+              fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
         backgroundColor: Colors.pinkAccent.shade200,
@@ -374,10 +435,14 @@ class _HardLedgerState extends State<HardLedger> {
           ? Center(
         child: Text(
           'Get ready in $countdown...',
-          style: TextStyle(fontSize: 32, fontFamily: 'AppleGaramond', color: Colors.pinkAccent.shade200, fontWeight: FontWeight.bold),
+          style: TextStyle(fontSize: 32,
+              fontFamily: 'AppleGaramond',
+              color: Colors.pinkAccent.shade200,
+              fontWeight: FontWeight.bold),
         ),
       )
           : SingleChildScrollView(
+          controller: _scrollController, // Add this line
           padding: const EdgeInsets.all(16.0),
           child: quizUI(questionText)
       ),
@@ -389,22 +454,31 @@ class _HardLedgerState extends State<HardLedger> {
       children: [
         Padding(
           padding: const EdgeInsets.all(16.0),
-          child: Center(child: Text('Score: $score')),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'Time Left: $secondsRemaining seconds',
+                style: TextStyle(fontSize: 18, color: Colors.red),
+              ),
+              Text(
+                'Score: $score',
+                style: TextStyle(fontSize: 18),
+              ),
+            ],
+          ),
         ),
-        Text(
-          'Time Left: $secondsRemaining seconds',
-          style: TextStyle(fontSize: 18, color: Colors.red),
-        ),
-        SizedBox(height: 20),
         Text(
           'Transaction:\n$questionText',
           textAlign: TextAlign.center,
-          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, fontFamily: 'AppleGaramond'),
+          style: TextStyle(fontSize: 22,
+              fontWeight: FontWeight.bold,
+              fontFamily: 'AppleGaramond'),
         ),
         SizedBox(height: 10),
         Wrap(
-          spacing: 12,
-          runSpacing: 12,
+          spacing: 5,
+          runSpacing: 5,
           alignment: WrapAlignment.center,
           children: (questions[currentQuestion]['choices'] as List<String>)
               .map((item) {
@@ -412,14 +486,16 @@ class _HardLedgerState extends State<HardLedger> {
               data: item,
               feedback: Material(
                 color: Colors.transparent,
-                child: Chip(label: Text(item, style: TextStyle(fontSize: 15))),
+                child: Chip(label: Text(item, style: TextStyle(fontSize: 16))),
               ),
               childWhenDragging: Chip(
-                label: Text(item, style: TextStyle(color: Colors.pinkAccent.shade200)),
+                label: Text(
+                    item, style: TextStyle(color: Colors.pinkAccent.shade200)),
               ),
               child: Chip(
                 label: Text(item,
-                    style: TextStyle(fontSize: 18, fontFamily: 'GlacialIndifference')),
+                    style: TextStyle(
+                        fontSize: 16, fontFamily: 'GlacialIndifference')),
               ),
             );
           }).toList(),
@@ -444,13 +520,15 @@ class _HardLedgerState extends State<HardLedger> {
                       child: Text(
                         'Account:',
                         style: TextStyle(
-                            fontWeight: FontWeight.bold, fontFamily: 'GlacialIndifference', fontSize: 16
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'GlacialIndifference',
+                            fontSize: 16
                         ),
                       ),
                     ),
                     Container(
                       color: Colors.pinkAccent.shade200,
-                      height: 43 ,
+                      height: 43,
                       alignment: Alignment.centerLeft,
                       child: dragTargetCell('Account_1'),
                     ),
@@ -463,14 +541,16 @@ class _HardLedgerState extends State<HardLedger> {
                       height: 35,
                       alignment: Alignment.centerRight,
                       padding: EdgeInsets.only(right: 8),
-                      child: Text('RM', style: TextStyle(fontWeight: FontWeight.bold)),
+                      child: Text(
+                          'RM', style: TextStyle(fontWeight: FontWeight.bold)),
                     ),
                     Container(
                       color: Colors.pinkAccent.shade100,
                       height: 35,
                       alignment: Alignment.centerRight,
                       padding: EdgeInsets.only(right: 8),
-                      child: Text('RM', style: TextStyle(fontWeight: FontWeight.bold)),
+                      child: Text(
+                          'RM', style: TextStyle(fontWeight: FontWeight.bold)),
                     ),
                   ],
                 ),
@@ -520,7 +600,9 @@ class _HardLedgerState extends State<HardLedger> {
                       child: Text(
                         'Account:',
                         style: TextStyle(
-                            fontWeight: FontWeight.bold, fontFamily: 'GlacialIndifference', fontSize: 16
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'GlacialIndifference',
+                            fontSize: 16
                         ),
                       ),
                     ),
@@ -538,14 +620,16 @@ class _HardLedgerState extends State<HardLedger> {
                       height: 35,
                       alignment: Alignment.centerRight,
                       padding: EdgeInsets.only(right: 8),
-                      child: Text('RM', style: TextStyle(fontWeight: FontWeight.bold)),
+                      child: Text(
+                          'RM', style: TextStyle(fontWeight: FontWeight.bold)),
                     ),
                     Container(
                       color: Colors.pinkAccent.shade100,
                       height: 35,
                       alignment: Alignment.centerRight,
                       padding: EdgeInsets.only(right: 8),
-                      child: Text('RM', style: TextStyle(fontWeight: FontWeight.bold)),
+                      child: Text(
+                          'RM', style: TextStyle(fontWeight: FontWeight.bold)),
                     ),
                   ],
                 ),
@@ -581,7 +665,9 @@ class _HardLedgerState extends State<HardLedger> {
                       child: Text(
                         'Account:',
                         style: TextStyle(
-                            fontWeight: FontWeight.bold, fontFamily: 'GlacialIndifference', fontSize: 16
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'GlacialIndifference',
+                            fontSize: 16
                         ),
                       ),
                     ),
@@ -599,14 +685,16 @@ class _HardLedgerState extends State<HardLedger> {
                       height: 35,
                       alignment: Alignment.centerRight,
                       padding: EdgeInsets.only(right: 8),
-                      child: Text('RM', style: TextStyle(fontWeight: FontWeight.bold)),
+                      child: Text(
+                          'RM', style: TextStyle(fontWeight: FontWeight.bold)),
                     ),
                     Container(
                       color: Colors.pinkAccent.shade100,
                       height: 35,
                       alignment: Alignment.centerRight,
                       padding: EdgeInsets.only(right: 8),
-                      child: Text('RM', style: TextStyle(fontWeight: FontWeight.bold)),
+                      child: Text(
+                          'RM', style: TextStyle(fontWeight: FontWeight.bold)),
                     ),
                   ],
                 ),
@@ -656,7 +744,9 @@ class _HardLedgerState extends State<HardLedger> {
                       child: Text(
                         'Account:',
                         style: TextStyle(
-                            fontWeight: FontWeight.bold, fontFamily: 'GlacialIndifference', fontSize: 16
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'GlacialIndifference',
+                            fontSize: 16
                         ),
                       ),
                     ),
@@ -674,14 +764,16 @@ class _HardLedgerState extends State<HardLedger> {
                       height: 35,
                       alignment: Alignment.centerRight,
                       padding: EdgeInsets.only(right: 8),
-                      child: Text('RM', style: TextStyle(fontWeight: FontWeight.bold)),
+                      child: Text(
+                          'RM', style: TextStyle(fontWeight: FontWeight.bold)),
                     ),
                     Container(
                       color: Colors.pinkAccent.shade100,
                       height: 35,
                       alignment: Alignment.centerRight,
                       padding: EdgeInsets.only(right: 8),
-                      child: Text('RM', style: TextStyle(fontWeight: FontWeight.bold)),
+                      child: Text(
+                          'RM', style: TextStyle(fontWeight: FontWeight.bold)),
                     ),
                   ],
                 ),
@@ -750,7 +842,9 @@ class _HardLedgerState extends State<HardLedger> {
           ),
           ElevatedButton(
             onPressed: nextQuestion,
-            child: Text(currentQuestion < questions.length - 1 ? 'Next Question' : 'Finish'),
+            child: Text(currentQuestion < questions.length - 1
+                ? 'Next Question'
+                : 'Finish'),
           ),
         ],
       ],
@@ -760,6 +854,38 @@ class _HardLedgerState extends State<HardLedger> {
   Widget dragTargetCell(String column) {
     return DragTarget<String>(
       builder: (context, candidateData, rejectedData) {
+        // When dragging starts, check if we need to scroll
+        if (candidateData.isNotEmpty) {
+          // Calculate if this target is in the bottom half of the screen
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            final renderBox = context.findRenderObject() as RenderBox?;
+            if (renderBox != null) {
+              final position = renderBox.localToGlobal(Offset.zero);
+              final screenHeight = MediaQuery
+                  .of(context)
+                  .size
+                  .height;
+
+              // If the target is in the bottom 25% of the screen, scroll down
+              if (position.dy > screenHeight * 0.75) {
+                _scrollController.animateTo(
+                  _scrollController.offset + 100,
+                  duration: Duration(milliseconds: 200),
+                  curve: Curves.easeOut,
+                );
+              }
+              // If the target is in the top 25% of the screen, scroll up
+              else if (position.dy < screenHeight * 0.25) {
+                _scrollController.animateTo(
+                  _scrollController.offset - 100,
+                  duration: Duration(milliseconds: 200),
+                  curve: Curves.easeOut,
+                );
+              }
+            }
+          });
+        }
+
         return Container(
           height: 40,
           color: getBoxColor(column),

@@ -275,13 +275,20 @@ class _EasyLedgerState extends State<EasyLedger> {
       children: [
         Padding(
           padding: const EdgeInsets.all(16.0),
-          child: Center(child: Text('Score: $score')),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'Time Left: $secondsRemaining seconds',
+                style: TextStyle(fontSize: 18, color: Colors.red),
+              ),
+              Text(
+                'Score: $score',
+                style: TextStyle(fontSize: 18),
+              ),
+            ],
+          ),
         ),
-        Text(
-          'Time Left: $secondsRemaining seconds',
-          style: TextStyle(fontSize: 18, color: Colors.red),
-        ),
-        SizedBox(height: 20),
         Text(
           'Transaction:\n$questionText',
           textAlign: TextAlign.center,
