@@ -357,7 +357,10 @@ class _EasyAccountingEquationState extends State<EasyAccountingEquation> {
           ? Center(
         child: Text(
           'Get ready in $countdown...',
-          style: TextStyle(fontSize: 32, fontFamily: 'AppleGaramond'),
+          style: TextStyle(fontSize: 32,
+              fontFamily: 'AppleGaramond',
+              color: Colors.green.shade600,
+              fontWeight: FontWeight.bold),
         ),
       )
           : SingleChildScrollView(
@@ -372,64 +375,47 @@ class _EasyAccountingEquationState extends State<EasyAccountingEquation> {
       children: [
         Padding(
           padding: const EdgeInsets.all(16.0),
-          child: Center(child: Text('Score: $score')),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'Time Left: $secondsRemaining seconds',
+                style: TextStyle(fontSize: 18, color: Colors.red),
+              ),
+              Text(
+                'Score: $score',
+                style: TextStyle(fontSize: 18),
+              ),
+            ],
+          ),
         ),
-        Text(
-          'Time Left: $secondsRemaining seconds',
-          style: TextStyle(fontSize: 18, color: Colors.red),
-        ),
-        SizedBox(height: 20),
         Text(
           'Transaction:\n$questionText',
           textAlign: TextAlign.center,
           style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold, fontFamily: 'AppleGaramond'),
         ),
         SizedBox(height: 10),
-        Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: (questions[currentQuestion]['choices'] as List<String>)
-                  .sublist(0, 2)
-                  .map((item) {
-                return Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
-                  child: Draggable<String>(
-                    data: item,
-                    feedback: Material(
-                      color: Colors.transparent,
-                      child: Chip(label: Text(item, style: TextStyle(fontSize: 15))),
-                    ),
-                    childWhenDragging: Chip(
-                      label: Text(item, style: TextStyle(color: Colors.greenAccent.shade400)),
-                    ),
-                    child: Chip(label: Text(item, style: TextStyle(fontSize: 18, fontFamily: 'GlacialIndifference'))),
-                  ),
-                );
-              }).toList(),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: (questions[currentQuestion]['choices'] as List<String>)
-                  .sublist(2, 4)
-                  .map((item) {
-                return Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
-                  child: Draggable<String>(
-                    data: item,
-                    feedback: Material(
-                      color: Colors.transparent,
-                      child: Chip(label: Text(item, style: TextStyle(fontSize: 15))),
-                    ),
-                    childWhenDragging: Chip(
-                      label: Text(item, style: TextStyle(color: Colors.greenAccent.shade400)),
-                    ),
-                    child: Chip(label: Text(item, style: TextStyle(fontSize: 18, fontFamily: 'GlacialIndifference'))),
-                  ),
-                );
-              }).toList(),
-            ),
-          ],
+        Wrap(
+          spacing: 12,
+          runSpacing: 12,
+          alignment: WrapAlignment.center,
+          children: (questions[currentQuestion]['choices'] as List<String>)
+              .map((item) {
+            return Draggable<String>(
+              data: item,
+              feedback: Material(
+                color: Colors.transparent,
+                child: Chip(label: Text(item, style: TextStyle(fontSize: 15))),
+              ),
+              childWhenDragging: Chip(
+                label: Text(item, style: TextStyle(color: Colors.greenAccent.shade400)),
+              ),
+              child: Chip(
+                label: Text(item,
+                    style: TextStyle(fontSize: 18, fontFamily: 'GlacialIndifference')),
+              ),
+            );
+          }).toList(),
         ),
         SizedBox(height: 30),
         Table(

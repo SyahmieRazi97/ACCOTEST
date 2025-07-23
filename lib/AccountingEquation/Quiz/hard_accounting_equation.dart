@@ -454,7 +454,10 @@ class _HardAccountingEquationState extends State<HardAccountingEquation> {
           ? Center(
         child: Text(
           'Get ready in $countdown...',
-          style: TextStyle(fontSize: 32, fontFamily: 'AppleGaramond'),
+          style: TextStyle(fontSize: 32,
+              fontFamily: 'AppleGaramond',
+              color: Colors.green.shade600,
+              fontWeight: FontWeight.bold),
         ),
       )
           : SingleChildScrollView(

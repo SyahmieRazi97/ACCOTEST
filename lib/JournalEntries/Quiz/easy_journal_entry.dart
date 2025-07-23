@@ -275,11 +275,19 @@ class _EasyJournalEntryState extends State<EasyJournalEntry> {
       children: [
         Padding(
           padding: const EdgeInsets.all(16.0),
-          child: Center(child: Text('Score: $score')),
-        ),
-        Text(
-          'Time Left: $secondsRemaining seconds',
-          style: TextStyle(fontSize: 18, color: Colors.red),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'Time Left: $secondsRemaining seconds',
+                style: TextStyle(fontSize: 18, color: Colors.red),
+              ),
+              Text(
+                'Score: $score',
+                style: TextStyle(fontSize: 18),
+              ),
+            ],
+          ),
         ),
         SizedBox(height: 20),
         Text(
