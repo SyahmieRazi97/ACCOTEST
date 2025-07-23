@@ -389,8 +389,8 @@ class _MediumAccountingEquationState extends State<MediumAccountingEquation> {
         ),
         SizedBox(height: 10),
         Wrap(
-          spacing: 12,
-          runSpacing: 12,
+          spacing: 10,
+          runSpacing: 10,
           alignment: WrapAlignment.center,
           children: (questions[currentQuestion]['choices'] as List<String>)
               .map((item) {
