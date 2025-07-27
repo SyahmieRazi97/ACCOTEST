@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 class NotesJournalEntries extends StatelessWidget {
 
   final List<String> imagePaths = [
-    'Assets/images/notes/journeyentry/Slide1.PNG',
-    'Assets/images/notes/journeyentry/Slide2.PNG',
-    'Assets/images/notes/journeyentry/Slide3.PNG',
-    'Assets/images/notes/journeyentry/Slide4.PNG',
-    'Assets/images/notes/journeyentry/Slide5.PNG',
-    'Assets/images/notes/journeyentry/Slide6.PNG',
+    'assets/images/notes/journeyentry/Slide1.PNG',
+    'assets/images/notes/journeyentry/Slide2.PNG',
+    'assets/images/notes/journeyentry/Slide3.PNG',
+    'assets/images/notes/journeyentry/Slide4.PNG',
+    'assets/images/notes/journeyentry/Slide5.PNG',
+    'assets/images/notes/journeyentry/Slide6.PNG',
   ];
 
   @override

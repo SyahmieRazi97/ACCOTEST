@@ -8,6 +8,8 @@ class EasyJournalEntry extends StatefulWidget {
   State<EasyJournalEntry> createState() => _EasyJournalEntryState();
 }
 
+final ScrollController _scrollController = ScrollController();
+
 class MapEquality {
   bool equals(Map<String, String> a, Map<String, String> b) {
     for (var key in a.keys) {
@@ -256,16 +258,20 @@ class _EasyJournalEntryState extends State<EasyJournalEntry> {
         centerTitle: true,
         backgroundColor: Colors.blueAccent.shade200,
     ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: isCountdown
-            ? Center(
-          child: Text(
-            'Get ready in $countdown...',
-            style: TextStyle(fontSize: 32, fontFamily: 'AppleGaramond', color: Colors.blueAccent.shade200, fontWeight: FontWeight.bold),
-          ),
-        )
-            : quizUI(questionText),
+      body: isCountdown
+          ? Center(
+        child: Text(
+          'Get ready in $countdown...',
+          style: TextStyle(fontSize: 32,
+              fontFamily: 'AppleGaramond',
+              color: Colors.pinkAccent.shade200,
+              fontWeight: FontWeight.bold),
+        ),
+      )
+          : SingleChildScrollView(
+          controller: _scrollController, // Add this line
+          padding: const EdgeInsets.all(16.0),
+          child: quizUI(questionText)
       ),
     );
   }

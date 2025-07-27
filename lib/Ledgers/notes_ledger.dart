@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 class NotesLedger extends StatelessWidget {
 
   final List<String> imagePaths = [
-    'Assets/images/notes/ledger/Slide1.PNG',
-    'Assets/images/notes/ledger/Slide2.PNG',
-    'Assets/images/notes/ledger/Slide3.PNG',
-    'Assets/images/notes/ledger/Slide4.PNG',
-    'Assets/images/notes/ledger/Slide5.PNG',
+    'assets/images/notes/ledger/Slide1.PNG',
+    'assets/images/notes/ledger/Slide2.PNG',
+    'assets/images/notes/ledger/Slide3.PNG',
+    'assets/images/notes/ledger/Slide4.PNG',
+    'assets/images/notes/ledger/Slide5.PNG',
   ];
 
   @override
