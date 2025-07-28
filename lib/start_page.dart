@@ -1,20 +1,16 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_account/main_page.dart';
-import 'Services/global_variables.dart';
 
 class StartPage extends StatefulWidget {
-
   @override
   State<StartPage> createState() => _StartPageState();
 }
 
 class _StartPageState extends State<StartPage> with TickerProviderStateMixin {
-
   late Animation<double> _animation;
   late AnimationController _animationController;
 
-
+  @override
   void dispose() {
     _animationController.dispose();
     super.dispose();
@@ -23,13 +19,19 @@ class _StartPageState extends State<StartPage> with TickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-    _animationController = AnimationController(vsync: this, duration: const Duration(seconds: 35));
-    _animation = CurvedAnimation(parent: _animationController, curve: Curves.linear)
+    _animationController = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 35),
+    );
+    _animation = CurvedAnimation(
+      parent: _animationController,
+      curve: Curves.linear,
+    )
       ..addListener(() {
         setState(() {});
       })
-      ..addStatusListener((animationStatus) {
-        if (animationStatus == AnimationStatus.completed) {
+      ..addStatusListener((status) {
+        if (status == AnimationStatus.completed) {
           _animationController.reset();
           _animationController.forward();
         }
@@ -42,17 +44,12 @@ class _StartPageState extends State<StartPage> with TickerProviderStateMixin {
     return Scaffold(
       body: Stack(
         children: [
-          CachedNetworkImage(
-            imageUrl: loginUrlImage,
-            placeholder: (context, url) => Image.asset(
-              'Assets/images/Wallpaper.jpg',
-              fit: BoxFit.fill,
-            ),
-            errorWidget: (context, url, error) => const Icon(Icons.error),
+          Image.asset(
+            'assets/images/WallpaperAccotest.jpg', // Local image only
             width: double.infinity,
             height: double.infinity,
             fit: BoxFit.cover,
-            alignment: FractionalOffset(_animation.value, 0),
+            alignment: FractionalOffset(_animation.value, 0), // Animation effect
           ),
           Center(
             child: Column(
@@ -81,10 +78,15 @@ class _StartPageState extends State<StartPage> with TickerProviderStateMixin {
                     backgroundColor: Colors.teal[400],
                     foregroundColor: Colors.white,
                     padding: EdgeInsets.symmetric(horizontal: 32, vertical: 16),
-                    textStyle: TextStyle(fontSize: 20, fontFamily: 'GlacialIndifference'),
+                    textStyle: TextStyle(
+                      fontSize: 20,
+                      fontFamily: 'GlacialIndifference',
+                    ),
                   ),
                   onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => MainPage())
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => MainPage()),
                     );
                   },
                   child: Text('Lets Start'),

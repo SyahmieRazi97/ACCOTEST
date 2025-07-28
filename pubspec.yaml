@@ -68,27 +68,12 @@ flutter:
   fonts:
     - family: AppleGaramond
       fonts:
-        - asset: Assets/Fonts/AppleGaramond.ttf
+        - asset: assets/Fonts/AppleGaramond.ttf
     - family: GlacialIndifference
       fonts:
-        - asset: Assets/Fonts/GlacialIndifference.otf
+        - asset: assets/Fonts/GlacialIndifference.otf
   assets:
-    - Assets/images/notes/accountingequation/Slide1.PNG
-    - Assets/images/notes/accountingequation/Slide2.PNG
-    - Assets/images/notes/accountingequation/Slide3.PNG
-    - Assets/images/notes/accountingequation/Slide4.PNG
-    - Assets/images/notes/accountingequation/Slide5.PNG
-    - Assets/images/notes/accountingequation/Slide6.PNG
-    - Assets/images/notes/accountingequation/Slide7.PNG
-    - Assets/images/notes/journeyentry/Slide1.PNG
-    - Assets/images/notes/journeyentry/Slide2.PNG
-    - Assets/images/notes/journeyentry/Slide3.PNG
-    - Assets/images/notes/journeyentry/Slide4.PNG
-    - Assets/images/notes/journeyentry/Slide5.PNG
-    - Assets/images/notes/journeyentry/Slide6.PNG
-    - Assets/images/notes/ledger/Slide1.PNG
-    - Assets/images/notes/ledger/Slide2.PNG
-    - Assets/images/notes/ledger/Slide3.PNG
-    - Assets/images/notes/ledger/Slide4.PNG
-    - Assets/images/notes/ledger/Slide5.PNG
-    - Assets/images/Wallpaper.jpg
+    - assets/images/notes/accountingequation/
+    - assets/images/notes/journeyentry/
+    - assets/images/notes/ledger/
+    - assets/images/

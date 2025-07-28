@@ -1,1 +1,0 @@
-String loginUrlImage = 'https://www.shutterstock.com/image-photo/business-financing-accounting-banking-concept-600nw-2441922909.jpg';
