@@ -16,28 +16,7 @@ class _StartPageState extends State<StartPage> with TickerProviderStateMixin {
     super.dispose();
   }
 
-  @override
-  void initState() {
-    super.initState();
-    _animationController = AnimationController(
-      vsync: this,
-      duration: const Duration(seconds: 35),
-    );
-    _animation = CurvedAnimation(
-      parent: _animationController,
-      curve: Curves.linear,
-    )
-      ..addListener(() {
-        setState(() {});
-      })
-      ..addStatusListener((status) {
-        if (status == AnimationStatus.completed) {
-          _animationController.reset();
-          _animationController.forward();
-        }
-      });
-    _animationController.forward();
-  }
+
 
   @override
   Widget build(BuildContext context) {
