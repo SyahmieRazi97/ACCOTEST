@@ -30,7 +30,7 @@ class _MainPageState extends State<MainPage> {
     return Scaffold(
       backgroundColor: Colors.blueGrey[50],
       appBar: AppBar(
-        title: Text('Smart Accounting',
+        title: Text('ACCOTEST',
           style: TextStyle(
               fontFamily: 'AppleGaramond',
               fontWeight: FontWeight.bold,

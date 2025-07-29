@@ -15,10 +15,10 @@ class NotesLedger extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Ledger Note',
-            style: TextStyle(fontFamily: 'AppleGaramond')
+            style: TextStyle(fontFamily: 'AppleGaramond', fontWeight: FontWeight.bold)
         ),
         centerTitle: true,
-        backgroundColor: Colors.blueAccent.shade200,
+        backgroundColor: Colors.pinkAccent.shade200,
       ),
       body: PageView.builder(
         itemCount: imagePaths.length,
